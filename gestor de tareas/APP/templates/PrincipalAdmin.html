@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}"> -->
+    <link rel="stylesheet" href="../static/css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="../static/js/modales.js"></script>
+    <title>Formulario de Registro</title>
+</head>
+<body>
+    <header>
+        <h1>Panel de control</h1>
+        <ul>
+            <li><a href="/lista">Inicio</a></li>
+            <li><a href="/RegistroUsuarios">Registrar usuarios</a></li>
+            <li><a href="/RegistroTareas">Añadir tareas</a></li>
+            <li><a href="/salir">Cerrar Sesión</a></li>
+        </ul>
+
+        <form class="form-inline" action="/buscar_tarea" method="POST">
+            <div class="input-group">
+                <input type="text" class="form-control" name="busqueda" placeholder="Buscar tarea">
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btb btn-danger">Buscar</button>
+            </div>
+
+        </form>
+        <div class="d-flexjustify-content-end">
+            <div>
+                {% if 'usuario' in session %}
+                <p class="ml-3">Bienvenido {{ session ['usuario']}} Tu rol es: {{ session ['rol']}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <center><h1 id="usuregis">Usuarios registrados</h1></center>
+    <table id="tabla1" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Nombre </th>
+                <th>Apellido </th>
+                <th>Email </th>
+                <th>Usuario </th>
+                <th>Rol </th>
+                <TH></TH>
+                <th>Eliminar</th>
+                <th>Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario[0] }}</td>
+                <td>{{ usuario[1] }}</td>
+                <td>{{ usuario[2] }}</td>
+                <td>{{ usuario[3] }}</td>
+                <td>{{ usuario[4] }}</td>
+                <td>{{ usuario[6] }}</td>
+                <td class="acciones"></td>
+                <td><a href="{{url_for('eliminar_usuario',id=usuario[0])}}" class="btn btn-outline-danger">Eliminar</a></td>
+                <td><a href="{{url_for('editar_usuario',id=usuario[0])}}" class="btn btn-outline-info" data-toggle="modal" data-target="#Mtareas">Actualizar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <center><h1 id="usuregis">Usuarios Tareas registradas</h1></center>
+    <table id="tabla1" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id </th>
+                <th>Nombre </th>
+                <th>Fecha inicio </th>
+                <th>Fecha fin </th>
+                <th>Estado </th>
+                <th>ID_usuario </th>
+                <th>Eliminar</th>
+                <th>Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nombretar in tareas %}
+            <tr>
+                <td>{{ nombretar[0] }}</td>
+                <td>{{ nombretar[1] }}</td>
+                <td>{{ nombretar[2] }}</td>
+                <td>{{ nombretar[3] }}</td>
+                <td>{{ nombretar[4] }}</td>
+                <td>{{ nombretar[5] }}</td>
+                <td><a href="{{url_for('eliminartar_usuario',idt=nombretar[0])}}" class="btn btn-outline-danger">Eliminar</a></td>
+                <td><a href="{{url_for('editar_usuario',id=nombretar[0])}}" class="btn btn-outline-info" data-toggle="modal" data-target="#Mtareas">Actualizar</a></td>
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilo.css')}}">
+    <title>Tareas</title>
+</head>
+<body>
+    <header>
+        <h1>Menú</h1>
+        <ul>
+            <li><a href="/lista">Inicio</a></li>
+            <li><a href="/RegistroUsuarios">Registrar Usuario</a></li>
+            <li><a href="/RegistroTareas">Registrar Tareas</a></li>
+            <li><a href="/salir">Cerrar Sesión</a></li>
+        </ul>
+    </header>
+    <div class="container">
+        <center><h2>Formulario de Tareas</h2></center>
+        <form action="/RegistroTareas" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre de la Tarea:</label>
+                <input type="text" name="nombretar" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de Inicio:</label>
+                <input type="date" name="fechainicio" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_fin">Fecha de Fin:</label>
+                <input type="date" name="fechafin" required>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado de la Tarea:</label>
+                <select name="estado" required>
+                    <option value="por asignar">Por Asignar</option>
+                    <option value="en proceso">En Proceso</option>
+                    <option value="terminado">Terminado</option>
+                </select>
+            </div>
+            <input type="submit" value="Guardar Tarea">
+        </form>
+    </div>
+</body>
+</html>

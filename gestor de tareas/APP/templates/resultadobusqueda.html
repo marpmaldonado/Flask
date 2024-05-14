@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilo.css')}}">
+    <title>Tareas</title>
+</head>
+<body>
+    <header>
+        <h1>Menú</h1>
+        <ul>
+            <li><a href="/lista">Inicio</a></li>
+            <li><a href="/RegistroUsuarios">Registrar Usuario</a></li>
+            <li><a href="/RegistroTareas">Registrar Tareas</a></li>
+            <li><a href="/salir">Cerrar Sesión</a></li>
+        </ul>
+    </header>
+    
+
+
+    <h1>Resultado de la busqueda "{{ busqueda}}"</h1>
+
+    <div class="row">
+        {%for tarea in tareas %}
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-write">
+                    <h5 class="card-tittle mb-0" >Codigo de tarea:{{ tarea['idtar']}}  </h5>
+                            
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text"><strong>Nombre Tarea</strong>{{ tarea ['nombretar']}}</p>
+                    <p class="card-text"><strong>Fecha de inicio</strong>{{ tarea ['fechainicio']}}</p>
+                    <p class="card-text"><strong>Fecha final</strong>{{ tarea ['fechafin']}}</p>
+                    <p class="card-text"><strong>Estado</strong>{{ tarea ['estado']}}</p>
+
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="{{url_for}}">eliminar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+       
+    </div>
+</body>
+</html>
