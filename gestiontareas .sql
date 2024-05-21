@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2024 a las 04:10:32
+-- Tiempo de generación: 21-05-2024 a las 20:12:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,10 +41,11 @@ CREATE TABLE `tareas` (
 --
 
 INSERT INTO `tareas` (`IDtarea`, `nombretar`, `fechainicio`, `fechafin`, `estado`, `Id_Usuario1`) VALUES
-(9, 'Caminar', '2024-04-29', '2024-04-30', 'en proceso', 2),
-(10, 'limpiar', '2024-05-01', '2024-05-02', 'por asignar', 3),
-(11, 'jugar con make', '2024-05-05', '2024-05-06', 'en proceso', 2),
-(12, 'besar', '2024-05-07', '2024-05-09', 'en proceso', 4);
+(13, 'Trapear', '2024-05-20', '2024-05-24', 'en proceso', 5),
+(22, 'recoger los niños', '2024-05-15', '2024-05-03', 'terminado', 8),
+(23, 'Cocinar', '2024-05-11', '2024-05-07', 'por asignar', 8),
+(24, 'tarea de mate', '2020-12-12', '2020-01-12', 'en proceso', 8),
+(25, 'lavar el carro', '2022-09-07', '2023-09-08', 'por asignar', 8);
 
 -- --------------------------------------------------------
 
@@ -67,10 +68,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuarios`, `nombre`, `apellido`, `email`, `usuario`, `contraseña`, `rol`) VALUES
-(1, 'Emmanuel', 'Sandoval', 'emmatwice.exo@gmail.com', 'Emma', 'scrypt:32768:8:1$B0r1FATUBIW4klf3$9ac95a8d38be497136e16506a6bfd803077f09c6a1579c78d6228851564f67b3e05853ae6960dd79faf5a415f0c94cfe860a69cefebbb43d97f4c58a52b337d7', 'admin'),
-(2, 'Alejandrina', 'Polanias', 'aleja@gmail.com', 'Aleja', 'scrypt:32768:8:1$ljuziQTXdork3zJa$8aeb9cfbb4c2f081f85f718cc967bbd8828aa3e6bbf810820d69bd384de02b376dfa161c120db35934a479272b6e1cf14b2c563de33d07898bf5aee87fd11437', 'usuario'),
-(3, 'Santiago', 'Ruiz', 'santi@gmail.com', 'khin0s', 'scrypt:32768:8:1$dvZF7Ijwh68Ri3p7$9916392ebff79e07e159b515c2c1d1f327f8fbb71e544651b7c13e6924a3a2080b10f9c0823efaa34dda0c3a1530fb1289ec336348876fce57b9acf972600684', 'usuario'),
-(4, 'David', 'Contreras', 'davidc@gmail.com', 'davisito', 'scrypt:32768:8:1$rXfcqe0uy7m4nng9$912c00205f0f61e04ee8f5485cfde2c1fda461d5bc8396ae77884f258cfabf6d7c401c68e70275c8d211a6defa70682601ffba12cdb012b0c525ec8fef7ebf6c', 'usuario');
+(5, 'Jack', 'Molina', 'jack@gmail.com', 'jackjack', 'scrypt:32768:8:1$BY0NzawrUyH1SFdY$fae6a5435b4c6c78e51858a52e153d600d0b543bca08795f060a2d3619aad56dcb19fc49c201823ca36755418fdd594f474464a9eeedf8e44d0150fd45a2c6d9', 'usuario'),
+(6, 'Mariap', 'MM', 'cielopaulis1@gmail.com', 'MPMP', 'scrypt:32768:8:1$bVi6Z9PlaCEhIyPq$d5f81853089c862d10194ae9f72a2dcb0789fb13716d9729e39eceb9e54f256b9d14455a8aed6e18a4a4758705eac57c50a243403a40c450a7395dece59d32f3', 'admin'),
+(7, 'Gatorade', 'Bebida Hidratante', 'gatorade@gmail.com', 'Gatorade', 'scrypt:32768:8:1$3Wr8Ut73ysucxRD0$bd40fa5cccee0979738f6f62521b342956652c473f033737d51d0cc5d3b5500bdc40184593fc2741d420d36e5cdb97ceaf387238be3fc46f1433f56c4e3c9f50', 'admin'),
+(8, 'usuario', 'u', 'usuario@gmail.com', 'usuario', 'scrypt:32768:8:1$OX1lD4Bq5iZ2uQij$06e5447423878824d4dc1b34f8e23911698fefc8687964e657455da6a70b325501bbac8450d100084f631f261b84ff9685f3c3a56dc42d48e95110473414951e', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -97,13 +98,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `IDtarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IDtarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
