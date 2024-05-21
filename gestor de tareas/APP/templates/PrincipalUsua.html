@@ -39,7 +39,10 @@
                 <td>{{ nombretar[3] }}</td>
                 <td>{{ nombretar[4] }}</td>
                 
+                <td><a href="{{url_for('eliminar_tarea_usuario',idt=nombretar[0])}}" class="btn btn-outline-danger">Eliminar</a></td>
+                <td><a href="{{url_for('editar_usuario',id=nombretar[0])}}" class="btn btn-outline-info" data-toggle="modal" data-target="#Mtareas">Actualizar</a></td>
 
+                
             </tr>
             {% endfor %}
         </tbody>

@@ -62,8 +62,8 @@
                 <td>{{ usuario[6] }}</td>
                 <td class="acciones"></td>
                 <td><a href="{{url_for('eliminar_usuario',id=usuario[0])}}" class="btn btn-outline-danger">Eliminar</a></td>
-                <td><a href="{{url_for('editar_usuario',id=usuario[0])}}" class="btn btn-outline-info" data-toggle="modal" data-target="#Mtareas">Actualizar</a></td>
-            </tr>
+                <td><a href="{{url_for('editar_datos_usuario',id=usuario[0])}}" class="btn btn-outline-info" data-toggle="modal" data-target="#Musuario">Actualizar</a></td>
+                        </tr>
             {% endfor %}
         </tbody>
     </table>
