@@ -19,15 +19,26 @@
             <li><a href="/salir">Cerrar Sesión</a></li>
         </ul>
 
+        <h1>Busca una tarea</h1>
         <form class="form-inline" action="/buscar_tarea" method="POST">
             <div class="input-group">
-                <input type="text" class="form-control" name="busqueda" placeholder="Buscar tarea">
+                <input type="text" class="form-control" name="busqueda" placeholder="Buscar tarea por su ID o nombre">
             </div>
             <div class="input-group-append">
                 <button type="submit" class="btb btn-danger">Buscar</button>
             </div>
-
         </form>
+        <h1>Busca un usuario</h1>
+        <form class="form-inline" action="/buscar_usuario" method="POST">
+            <div class="input-group">
+                <input type="text" class="form-control" name="busqueda" placeholder="Buscar usuario por su ID o nombre">
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btb btn-danger">Buscar</button>
+            </div>
+        </form>
+
+
         <div class="d-flexjustify-content-end">
             <div>
                 {% if 'usuario' in session %}
