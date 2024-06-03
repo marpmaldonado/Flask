@@ -7,6 +7,11 @@ from itsdangerous import URLSafeTimedSerializer
 from itsdangerous.exc import BadSignature
 
 
+###############################################################
+############CONFIGURACION GENERAL##########################
+###############################################################
+
+
 #NOMBRE DE LA APP
 app=Flask(__name__)
 app.config['SECRET_KEY'] = '123456789'
@@ -108,6 +113,7 @@ def login():
       print('usuario invalido o credenciales incorrectas')
       return render_template("index.html")
    return render_template('index.html')
+
  #codigo para cerrar sesion
 @app.route('/salir')
 def salir():
@@ -121,19 +127,7 @@ def add_header(response):
    response.headers['Expires'] = 0
    return response
 
-#ruta para abrir la pagina principal de admin
-@app.route('/PrincipalAdmin',methods=['GET','POST'])
-def PrincipalAdmin():
-   return render_template('PrincipalAdmin.html')
 
-#ruta para abrir la principal de usuario
-@app.route('/PrincipalUsu',methods=['GET','POST'])
-def PrincipalUsua():
-   return render_template('PrincipalUsua.html')
-
-@app.route('/RegistroTarUsu',methods=['GET','POST'])
-def RegisTarUsu():
-   return render_template('RegistroTareasU.html')
 
 #ruta para registrarse desde el index
 @app.route('/Registrarse',methods=['GET','POST'])
@@ -160,6 +154,20 @@ def Registrarse():
         Warning("datos insertados correctamente")
         return redirect(url_for('Registrarse'))
     return render_template('Registrarme.html') #render template: carga una vista de tipo html
+
+
+###############################################################
+############CONFIGURACION DEL ADMINISTRADOR##########################
+###############################################################
+
+
+
+
+#ruta para abrir la pagina principal de admin
+@app.route('/PrincipalAdmin',methods=['GET','POST'])
+def PrincipalAdmin():
+   return render_template('PrincipalAdmin.html')
+
 
 
 
@@ -346,29 +354,7 @@ def editar_tarea(id):
        cursor.close() 
        return render_template('Modaltareas.html', tareas=data[0])
      
-#Editar tarea desde usuario
-@app.route('/editardesusu/<int:id>',methods=['GET','POST'])
-def editar_tarea_usuario(id):
-     
-     
-     if request.method == 'POST':
-       nombretar = request.form['nombretar']
-       fechainicio = request.form['fechainicio']
-       fechatermino = request.form['fechafin']
-       estadotar = request.form['estado']
 
-     #actualizar los datos del formulario
-       cursor = db.cursor()
-       sql = "UPDATE tareas SET nombretar=%s, fechainicio=%s, fechafin=%s, estado=%s WHERE IDtarea=%s"
-       cursor.execute(sql,(nombretar,fechainicio,fechatermino,estadotar,id))
-       db.commit()
-       return redirect(url_for('listarTar'))
-     else:
-       cursor = db.cursor()
-       cursor.execute('SELECT * FROM tareas WHERE IDtarea = %s',(id,))
-       data=cursor.fetchall()
-       cursor.close() 
-       return render_template('Modaltareas.html', tareas=data[0])
 
        
       
@@ -404,3 +390,44 @@ if __name__ =='__main__':
     app.run(debug=True)#correr en funcion de bugeo
     app.add_url_rule('/', view_func=login)
  #llama al index.html
+
+ 
+
+ ###############################################################
+############CONFIGURACION DEL USUARIO##########################
+###############################################################
+
+ #ruta para abrir la principal de usuario
+@app.route('/PrincipalUsu',methods=['GET','POST'])
+def PrincipalUsua():
+   return render_template('PrincipalUsua.html')
+
+@app.route('/RegistroTarUsu',methods=['GET','POST'])
+def RegisTarUsu():
+   return render_template('RegistroTareasU.html')
+
+
+#Editar tarea desde usuario
+@app.route('/editardesusu/<int:id>',methods=['GET','POST'])
+def editar_tarea_usuario(id):
+     
+     
+     if request.method == 'POST':
+       nombretar = request.form['nombretar']
+       fechainicio = request.form['fechainicio']
+       fechatermino = request.form['fechafin']
+       estadotar = request.form['estado']
+
+     #actualizar los datos del formulario
+       cursor = db.cursor()
+       sql = "UPDATE tareas SET nombretar=%s, fechainicio=%s, fechafin=%s, estado=%s WHERE IDtarea=%s"
+       cursor.execute(sql,(nombretar,fechainicio,fechatermino,estadotar,id))
+       db.commit()
+       return redirect(url_for('listarTar'))
+     else:
+       cursor = db.cursor()
+       cursor.execute('SELECT * FROM tareas WHERE IDtarea = %s',(id,))
+       data=cursor.fetchall()
+       cursor.close() 
+       return render_template('Modaltareas.html', tareas=data[0])
+
